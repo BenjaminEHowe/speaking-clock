@@ -96,5 +96,28 @@
     <footer>
       <p>Created by <a href="https://www.beh.uk/">Benjamin Howe</a></p>
     </footer>
+    <script>
+      let timestamp = new Date().getTime();
+
+      function formatTime(date) {
+        let hours = date.getHours();
+        let minutes = date.getMinutes();
+        let seconds = date.getSeconds();
+
+        hours = String(hours).padStart(2, "0");
+        minutes = String(minutes).padStart(2, "0");
+        seconds = String(seconds).padStart(2, "0");
+
+        return `${hours}:${minutes}:${seconds}`;
+      }
+
+      function updateTime() {
+        document.getElementById("time").innerHTML = formatTime(new Date(timestamp));
+        timestamp += 1000;
+        window.setTimeout(updateTime, 1000);
+      }
+      
+      updateTime();
+    </script>
   </body>
 </html>
